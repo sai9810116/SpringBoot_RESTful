@@ -19,24 +19,17 @@ public class InfoController {
 	//透過 @RequestMapping 指定從/hello會被對應到此hello()方法
     @RequestMapping("/Message")
     //透過 @ResponseBody 告知Spring，此函數的回傳值是HTTP Response的本文
-    public @ResponseBody String Message(HttpServletRequest request,HttpServletResponse response){
-    	String ua = request.getHeader("User-Agent");
+    public @ResponseBody String Message(HttpServletRequest request, HttpServletResponse response){
+    	String ip = request.getRemoteAddr();
     	
-		return "input person id to get information! --> " + ua;
+		return "input person id to get information! IP: " + ip;
 	}
 	
-//    //加入{}對URL進行參數化
-//	@RequestMapping("/getInfo/id={id}")
-//	//加入 @PathVariable 讓Spring自動將URL轉換為此方法的參數
-//	public @ResponseBody String getInfo(@PathVariable("id") String id){
-//		return "{\"ID\":\""+id+"\",\"NAME\":\"TestPerson\"}";
-//	}
-    
 	@RequestMapping("/getInfo/id={id}")//此註釋確保HTTP請求被映射到對應的方法，默認所有HTTP操作
-	public Information getInfo(@PathVariable("id") String id){
+	public Information getInfo(@PathVariable("id") String id, HttpServletRequest request, HttpServletResponse response){
 		String new_id = new String(Base64.encodeBase64(id.getBytes()));
 		//調用model包裝成JSON
-		Information info = new Information(new_id,"");
+		Information info = new Information(new_id,"token","message");
 		return info;
 	}
 }
