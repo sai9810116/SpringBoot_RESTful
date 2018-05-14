@@ -1,0 +1,48 @@
+
+apply plugin: 'java' //獲得編譯 java 專案相關的 task
+apply plugin: 'eclipse' //獲得編譯 eclipse 專案相關的 task
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8 //設置JDK版本
+compileJava.options.encoding = 'UTF-8'
+	
+//設置依賴
+dependencies {
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.1.RELEASE'
+}
+	
+//設置 maven位置，線上的jar檔資源庫，
+repositories {
+	mavenCentral()
+}
+
+jar {
+   	manifest {
+      	attributes 'Main-Class': 'tw.com.codedata.application.WebApplication'
+   	}
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'config'
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.1.RELEASE")
+    }
+}
+
+task copyJars(type: Copy){
+  from configurations.runtime
+  into 'lib' //jar 放置位置
+}
