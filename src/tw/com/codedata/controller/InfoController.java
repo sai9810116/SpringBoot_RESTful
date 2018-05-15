@@ -16,7 +16,7 @@ import tw.com.codedata.model.Information;
 //此類別回傳默認為JSON格式
 @RestController
 public class InfoController {
-	//透過 @RequestMapping 指定從/hello會被對應到此hello()方法
+	//透過 @RequestMapping 指定從/Message會被對應到此Message()方法
     @RequestMapping("/Message")
     //透過 @ResponseBody 告知Spring，此函數的回傳值是HTTP Response的本文
     public @ResponseBody String Message(HttpServletRequest request, HttpServletResponse response){

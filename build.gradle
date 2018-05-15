@@ -4,18 +4,19 @@ apply plugin: 'eclipse' //獲得編譯 eclipse 專案相關的 task
 apply plugin: 'org.springframework.boot'
 
 sourceCompatibility = 1.8 //設置JDK版本
-compileJava.options.encoding = 'UTF-8'
+compileJava.options.encoding = 'UTF-8' //設置編碼
 	
-//設置依賴
+//設置依賴，即是專案所需要的jar檔
 dependencies {
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.1.RELEASE'
 }
 	
-//設置 maven位置，線上的jar檔資源庫，
+//設置 maven位置，線上的jar檔資源庫
 repositories {
 	mavenCentral()
 }
 
+//設置jar檔主要要啟動的程式
 jar {
    	manifest {
       	attributes 'Main-Class': 'tw.com.codedata.application.WebApplication'
