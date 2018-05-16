@@ -26,10 +26,13 @@ public class InfoController {
 	}
 	
 	@RequestMapping("/getInfo/id={id}")//此註釋確保HTTP請求被映射到對應的方法，默認所有HTTP操作
+	//利用HttpServletRequest去取得Header的資料，例如token
 	public Information getInfo(@PathVariable("id") String id, HttpServletRequest request, HttpServletResponse response){
 		String new_id = new String(Base64.encodeBase64(id.getBytes()));
+		String token = "";
+		String message = "";
 		//調用model包裝成JSON
-		Information info = new Information(new_id,"token","message");
+		Information info = new Information(new_id,token,message);
 		return info;
 	}
 }
