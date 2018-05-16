@@ -6,8 +6,8 @@
      |                           |
      |                           - controller - InfoController.java //接口位置和程式
      |                           |
-     |                           - model - Information.java
-     |                                     //Spring Boot把進入model的資料自動包裝成json格式
+     |                           - model - Information.java //把進入model的資料自動包裝成json格式
+     |                                     
      - lib //執行gradle copyJars把jar檔下載至此資料夾
      |
      - build //執行gradle clean build後才會出現
