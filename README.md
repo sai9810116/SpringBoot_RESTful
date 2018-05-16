@@ -1,5 +1,5 @@
 # Spring Boot RESTful 執行說明
-JAVA 1.8 & Gradle 4.7
+##### JAVA 1.8 & Gradle 4.7
 ---
 ##### 專案資料夾結構
      - src - tw - com - codedata - application - WebApplication.java //jar檔主要啟動的程式
